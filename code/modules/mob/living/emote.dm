@@ -126,15 +126,21 @@
 	if(. && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/open = FALSE
-		if(H.dna.features["wings"] != "None")
-			if(H.dna.species.mutant_bodyparts["wingsopen"])
+		var/obj/item/organ/external/wings/functional/wings = H.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
+		if(wings)
+			if(wings.wings_open)
 				open = TRUE
-				H.CloseWings()
+				wings.close_wings()
 			else
+<<<<<<< HEAD
 				H.OpenWings()
 			addtimer(CALLBACK(H, open ? /mob/living/carbon/human.proc/OpenWings : /mob/living/carbon/human.proc/CloseWings), wing_time)
 */
 //SKYRAT EDIT REMOVAL END
+=======
+				wings.open_wings()
+			addtimer(CALLBACK(wings, open ? /obj/item/organ/external/wings/functional.proc/open_wings : /obj/item/organ/external/wings/functional.proc/close_wings), wing_time)
+>>>>>>> 8a7f2581718 (The Great Species Dedatumming: External feature organs, part 1 (#59981))
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
