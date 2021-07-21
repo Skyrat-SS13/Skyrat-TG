@@ -37,7 +37,7 @@
 	if(give_objectives)
 		forge_traitor_objectives()
 
-	//equip() SKYRAT EDIT REMOVAL
+	equip()
 
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
@@ -60,10 +60,6 @@
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
-	//SKYRAT EDIT ADDITION
-	var/datum/objective/ambitions/objective = new
-	objectives += objective
-	/* SKYRAT EDIT REMOVAL
 	var/is_hijacker = FALSE
 	var/objective_count = 0
 
@@ -85,7 +81,6 @@
 		return
 
 	forge_escape_objective()
-	*/
 
 /// Forges a single escape objective and adds it to this datum's objective list.
 /datum/antagonist/traitor/proc/forge_escape_objective()
@@ -148,7 +143,6 @@
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
-	..() //SKYRAT EDIT ADDITION - AMBITIONS
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()

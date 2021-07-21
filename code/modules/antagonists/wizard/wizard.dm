@@ -18,12 +18,7 @@
 	show_to_ghosts = TRUE
 
 /datum/antagonist/wizard/on_gain()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
-	register()
 	equip_wizard()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		create_objectives()
 	if(move_to_lair)
@@ -63,9 +58,6 @@
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/proc/create_objectives()
-	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - WIZARD CHANGES
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	switch(rand(1,100))
 		if(1 to 30)
 			var/datum/objective/assassinate/kill_objective = new
@@ -110,16 +102,9 @@
 				var/datum/objective/hijack/hijack_objective = new
 				hijack_objective.owner = owner
 				objectives += hijack_objective
-	*/
-	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/wizard/on_removal()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
-	unregister()
 	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
-	*/
-	//SKYRAT EDIT REMOVAL END
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
